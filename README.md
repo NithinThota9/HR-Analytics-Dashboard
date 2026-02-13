@@ -1,236 +1,120 @@
-# Job-Market-Analytics-End-to-End-BI-Engineering-Case-Study
+# 👥 Employee Attrition Analysis Dashboard (Tableau)
 
 Overview
 
-This project demonstrates a complete Business Intelligence workflow — from raw data ingestion to executive-level dashboard reporting.
+This project is an interactive HR Attrition Analytics Dashboard built using Tableau to help organizations understand workforce turnover patterns and identify high-risk employee groups.
 
-The objective was to transform raw job posting data into a structured analytical model using SQL Server and build an interactive Power BI dashboard capable of answering key workforce intelligence questions such as:
+The dashboard analyzes employee demographics, department distribution, satisfaction levels, and education background to uncover the underlying reasons behind employee attrition.
 
-How is hiring demand evolving over time?
+Instead of static HR reports, this dashboard enables leadership to visually explore retention risk and make proactive workforce decisions.
 
-Which industries and locations dominate hiring?
+Business Problem
 
-What job roles are most in demand?
+Employee turnover is expensive and disruptive.
+HR teams often know how many employees leave — but not why they leave.
 
-How do experience requirements correlate with salary?
+<img width="1554" height="881" alt="image" src="https://github.com/user-attachments/assets/0cffc70c-b952-4c4d-8600-57620a9e94fe" />
 
-How competitive is the applicant market?
 
-The solution mirrors enterprise BI architecture by separating data transformation, modeling, and reporting layers.
+This dashboard answers questions such as:
 
-🏗 Architecture
-Raw Job Data
-   ↓
-SQL Staging & Cleaning
-   ↓
-Star Schema Modeling (Fact + Dimensions)
-   ↓
-Analytical Reporting View
-   ↓
-Power BI Dashboard
+Which employees are most likely to leave?
 
+Are certain departments facing retention issues?
 
-The design ensures scalability, performance optimization, and reporting abstraction.
+Does age or experience impact attrition?
 
-🗄 Data Engineering Layer (SQL Server)
-1️⃣ Raw Ingestion
+Is job satisfaction linked to turnover?
 
-Loaded 25,114 job postings (17 attributes) into:
+Does education background influence retention?
 
-raw_job_postings
+Key Metrics (KPI Section)
 
-This table stores source-level data without transformations.
+The dashboard provides an executive-level snapshot including:
 
-2️⃣ Data Cleaning & Staging
+Total Employees
 
-Created:
+Total Attrition Count
 
-stg_job_postings
+Attrition Rate %
 
-Key transformations:
+Average Employee Age
 
-Standardized data types
+Job Satisfaction Overview
 
-Extracted job_year from posting date
+Analysis Provided
+📊 Demographics Analysis
 
-Cleaned text fields
+Number of Employees by Age Group
 
-Removed duplicates
+Attrition by Gender
 
-Handled 93% null salary fields
+Attrition by Age Range
 
-Normalized salary ranges
+👉 Helps HR identify vulnerable workforce segments
 
-Structured experience fields
+🏢 Department Analysis
 
-This ensures data consistency before modeling.
+Department-wise Attrition Rate
 
-3️⃣ Dimensional Modeling (Star Schema)
+👉 Detects problematic teams or management structures
 
-Designed a scalable star schema:
+🎓 Education Analysis
 
-Fact Table
+Attrition by Education Field
 
-fact_job_postings
+👉 Shows if role mismatch or skill misalignment causes exits
 
-Contains:
+😊 Employee Satisfaction
 
-Salary metrics
+Job Satisfaction Rating Distribution
 
-Applicant counts
+👉 Strong indicator of retention risk
 
-Experience requirements
+Insights This Dashboard Enables
 
-Foreign keys to dimensions
+Using this dashboard, HR leaders can:
 
-Dimension Tables
+Predict high-risk employee groups
 
-dim_job
+Improve retention strategy
 
-dim_company
+Adjust compensation & engagement policies
 
-dim_location
+Identify department management issues
 
-Benefits:
+Reduce hiring replacement cost
 
-Optimized performance
+Tools Used
 
-Clear separation of concerns
+Tableau Desktop
 
-Flexible slicing & filtering
+Interactive Filters & Parameters
 
-Industry-standard BI modeling
+Calculated Fields
 
-4️⃣ Analytical Reporting View
+Workforce KPI Modeling
 
-Created:
+Data Visualization & Storytelling
 
-vw_job_market_analytics
+How to Use
 
-This reporting view joins fact and dimension tables and exposes analysis-ready columns to Power BI.
+Download the .twbx file from this repository
 
-This prevents dashboards from querying raw tables directly and improves maintainability.
+Open using Tableau Desktop or Tableau Public
 
-📊 Business Intelligence Layer (Power BI)
+Use filters to explore attrition patterns across employee groups
 
-Power BI connects directly to the analytical view.
+What This Project Demonstrates
 
-Core DAX Measures
-Total Job Postings = DISTINCTCOUNT(job_posting_id)
-Total Applicants = SUM(number_of_applicants)
-Avg Minimum Salary = AVERAGE(minimum_pay)
-Avg Maximum Salary = AVERAGE(maximum_pay)
-Avg Years of Experience = AVERAGE(years_of_experience)
+HR Analytics & People Data Understanding
 
+Business-driven dashboard design
 
-All KPIs were built using explicit measures to ensure proper filter context behavior.
+Ability to convert raw HR data into decisions
 
-📈 Dashboard Features
-🔹 Executive KPI Panel
+Stakeholder-friendly data storytelling
 
-Total job postings
+Author
 
-Salary averages
-
-Experience requirements
-
-Applicant volume
-
-🔹 Hiring Trend Analysis
-
-Time-series analysis showing hiring growth and post-pandemic recovery patterns.
-
-🔹 Top N Market Analysis
-
-Top industries by hiring
-
-Top job titles
-
-Top geographic markets
-
-🔹 Interactive Slicers
-
-Filter by:
-
-Year
-
-Industry
-
-Job level
-
-Location
-
-Enables multi-dimensional workforce analysis.
-
-📌 Key Insights
-
-Hiring demand shows steady year-over-year growth.
-
-Technology and internet industries dominate recruitment.
-
-Major metropolitan regions account for most postings.
-
-Mid-Senior roles represent the largest hiring segment.
-
-Higher experience requirements correlate with higher salary bands.
-
-Applicant volume suggests increasing market competitiveness.
-
-🛠 Tech Stack
-
-SQL Server
-
-T-SQL
-
-Star Schema Dimensional Modeling
-
-Power BI
-
-DAX
-
-Data Modeling
-
-Git Version Control
-
-📁 Repository Structure
-├── sql
-│   ├── 01_create_database.sql
-│   ├── 02_create_tables.sql
-│   ├── 03_data_cleaning.sql
-│   ├── 04_star_schema.sql
-│   ├── 05_create_view.sql
-│
-├── Job_Market_Analytics_Dashboard.pbix
-├── README.md
-
-🚀 Future Enhancements
-
-Year-over-Year growth %
-
-Applicant-to-job competition ratio
-
-Salary distribution histogram
-
-Drill-through reporting
-
-Performance optimization with indexing
-
-DirectQuery integration
-
-🎯 Conclusion
-
-This project demonstrates:
-
-End-to-end BI architecture design
-
-SQL transformation pipelines
-
-Dimensional data modeling
-
-Analytical view abstraction
-
-Executive dashboard development
-
-Structured insight communication
-
-The solution emphasizes scalability, clarity, and maintainability — following enterprise BI best practices.
+Nithin Thota
