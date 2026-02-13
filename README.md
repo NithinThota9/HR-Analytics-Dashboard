@@ -115,6 +115,5 @@ Ability to convert raw HR data into decisions
 
 Stakeholder-friendly data storytelling
 
-Author
-
-Nithin Thota
+#Author : Nithin Thota
+#Email : nithinthota999@gmail.com
